@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema de Auxílio ao Professor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css"> 
+
+
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Consulta de Alunos</h1>
+    
+	<div class="input-group mb-3">
+			<div class="input-group-append">
+          <input type="button" class=" btn-info" id="btnCarregar" value="Carregar Lista" />
+          <input type="button" class="btn-success" id="btnInfo" value="Selecionar" />
+        <select id="cboCidades" class="custom-select" placeholder="Selecione um aluno">
+        </select>
+			</div>
+	</div>
+  <div id="match-list"></div>
+  <table class="table-alunos table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col" id="infoGrupo">Grupo</th>
+        </tr>
+      </thead>
+      <tbody id="informacoes">
+      </tbody>
+    </table>
+  <table class="table-alunos table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Atividade Grupo</th>
+        </tr>
+      </thead>
+      <tbody id="atividadeGrupo">
+      </tbody>
+    </table>
+  <table class="table-alunos table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Atividade Individual</th>
+        </tr>
+      </thead>
+      <tbody id="atividade">
+      </tbody>
+    </table>
+  <table class="table-alunos table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Evento</th>
+        </tr>
+      </thead>
+      <tbody id="evento">
+      </tbody>
+    </table>
+	
+
+</div>
+
+
+<div id="modalAlunos" class="modalAlunos">
+  <div class="modal-content-alunos modal-dialog modal-dialog-centered">
+    <div class="modal-body-alunos ">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-11">
+            <div class="col-md-11">
+
+              
+            <table class="table-detalhes table-hover thead-dark  text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Atividade</th>
+                </tr>
+              </thead>
+              <tbody id="Atividade"></tbody>
+            </table>     
+            <table class="table-detalhes table-hover thead-dark   text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Grupo</th>
+                </tr>
+              </thead>
+              <tbody id="Grupo"></tbody>
+            </table>
+            <table class="table-detalhes table-hover thead-dark text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Data Inicio</th>
+                </tr>
+              </thead>
+              <tbody id="dataInicio"></tbody>
+            </table>         
+            <table class="table-detalhes table-hover thead-dark text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Data Fim</th>
+                </tr>
+              </thead>
+              <tbody id="dataFim"></tbody>
+            </table>   
+
+            <table class="table-detalhe table-hover thead-dark  text-center">
+              <tbody id="Tempo">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Tempo Total de Apresentações</th>
+                    <th scope="col">Tempo Para Cada Apresentação</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td><div id="tempoTotal"></td>
+                  <td><div id="tempoParcial"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>  
+        
+            
+            <div id="notas" class="notas col-md-11">
+            <table class="table-detalhes table-hover thead-dark text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Grupo</th>
+                </tr>
+              </thead>
+              <tbody id="GrupoNota"></tbody>
+            </tablename="notas">
+            <table class="table-detalhes table-hover thead-dark text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Nota</th>
+                </tr>
+              </thead>
+              <tbody id="notaGrupo"></tbody>
+            </table>
+
+            
+          </div>
+          </div>  
+          
+          </div>
+          <input type="button" id='BntClose' class="btn btn-danger" value="Fechar">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script src="https://kit.fontawesome.com/bf03909e2a.js"></script>
+<script src="../js/acesso-aluno.js"></script>
+
+
+
+</body>
+</html>

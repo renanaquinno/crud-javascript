@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema de Auxílio ao Professor</title>
+   <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css"> 
+
+
+
+</head>
+<body onload="verAtiv()">
+  <div class="container">
+    <h1 class="text-center">Sortear Grupo para Atividade</h1>
+    
+    <table class="table text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Grupo</th>
+	        <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody id="loadAtiv"></tbody>
+    </table>
+
+
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="btn btn-primary btn-lg"><i class="fas fa-plus size-big"></i> Sortear Grupo</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form>
+            <div class="form-row col-md-12">
+              <div class="form-group col-md-3">
+                <label for="inputEmail4">ID da Atividade</label>
+                <input type="text" class="form-control" id="idAtiv" placeholder="ID da Atividade">
+              </div>
+              <div class="form-group col-md-7">
+                <div id="grupolab"></div>
+                <div id="grupo"></div>         
+              </div>       
+          </div>
+              <input type="button" id='close' class="close btn btn-danger" value="Cancelar">
+              <input type="button" id='new'  class="btn btn-warning" onclick="sortGrupoAtiv()" value="Sortear" >
+              <input type="button" id='new'  class="btn btn-success" onclick="insertGrupoAtiv()" value="Salvar" >
+            </div>
+          </form>
+        </div>
+      </div>   
+    </div>
+
+
+
+<!-------------------------------------------------------------------------------------------------->
+
+    <div id="modalAlunos" class="modalAlunos">
+      <div class="modal-content-alunos modal-dialog modal-dialog-centered">
+        <div class="modal-body-alunos ">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label class="label-grupo" id="numGrupo"></label>
+                <div id="NomeAlunos"></div>
+              </div>           
+              </div>
+              <input type="button" id='BntClose' class="btn btn-danger" value="Fechar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<!-------------------------------------------------------------------------------------------------->
+
+
+<br>
+<div id="squares" class="col-md-12"></div>
+<div class="footer">
+ 
+</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script src="https://kit.fontawesome.com/bf03909e2a.js"></script>
+<script src="../js/sort_grupo_ativ.js"></script>
+
+<script>
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    
+    
+    
+</script>
+
+
+</body>
+</html>

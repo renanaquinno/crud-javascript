@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gerenciamento de Eventos - Sistema de Auxílio ao Professor</title>
+   <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css"> 
+
+
+
+</head>
+<body onload="verEvento(),selecoes()">
+  <div class="container">
+    <h1 class="text-center">Gerenciamento de Eventos</h1>
+    <table class="table text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+	        <th>Detalhes</th>
+	        <th>Finalizar</th>
+	        <th>Cancelar</th>
+        </tr>
+      </thead>
+      <tbody id="carregarEvento"></tbody>
+    </table>
+
+    
+
+
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="btn btn-primary btn-lg"><i class="fas fa-plus size-big"></i> Novo Evento</button>
+    <!-- The Modal -->
+    <div id="myModal"  class="modal">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-1">
+                <label for="inputEmail4">ID</label>
+                <input type="text" class="form-control" id="idEvento" placeholder="ID">
+              </div>
+              <div class="form-group col-md-10">
+                <label for="inputEmail4">Nome</label>
+                <input type="text" class="form-control" id="nomeEvento" placeholder="Nome do Evento">
+              </div>
+              <div class="form-group col-md-11">
+                <label for="inputPassword4">Descrição</label>
+                <input type="text" class="form-control" id="desEvento" placeholder="Descrição do Evento">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputPassword4">Atividade</label>
+                <select id="cboAtividade" multiple class="form-control"  placeholder="Escolha as Atividades"></select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Grupo</label>
+                <select id="cboGrupo" multiple class="form-control" placeholder="Escolha os Grupos"></select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCity">Data de Início</label>
+                <input type="date" class="form-control" id="dtIeven">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCity">Data do Fim</label>
+                <input type="date" class="form-control" id="dtFeven">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputCity">Tempo Total</label>
+                <input type="number" class="form-control" id="TempoTotal" placeholder="Em Minutos">
+              </div>
+            </div>    
+            <input type="button" id='close' class="close btn btn-danger" value="Cancelar">
+            <input type="button" id='new'  class="close btn btn-success" onclick="cadastraEvento()" value="Cadastrar" >       
+            </div>  
+          </form> 
+      </div>
+      </div>
+    </div>
+
+
+    <div id="modalAlunos" class="modalAlunos">
+      <div class="modal-content-alunos modal-dialog modal-dialog-centered">
+        <div class="modal-body-alunos ">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-11">
+                <table class="table-detalhe table-hover thead-dark  text-center">
+                  <tbody id="Detalhes">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Nome do Evento</th>
+                        <th scope="col">Descrição do Evento</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <td><div class="form-group col-md-11" id="NomeEvento"></div></td>
+                      <td><div class="form-group col-md-11" id="DesEvento"></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+                  <table class="table-detalhe table-hover thead-dark  text-center">
+                    <tbody id="Tempo">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Tempo Total</th>
+                          <th scope="col">Tempo Para Cada Atividade</th>
+                          <th scope="col">Status do Evento</th>
+                        </tr>
+                      </thead>
+                      <tr>
+                        <td><div id="tempoTotal"></td>
+                        <td><div id="tempoParcial"></td>
+                        <td><div id="status"></div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                <table class="table-detalhes table-hover thead-dark  text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Atividade</th>
+                    </tr>
+                  </thead>
+                  <tbody id="Atividade"></tbody>
+                </table>     
+                <table class="table-detalhes table-hover thead-dark   text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Grupo</th>
+                    </tr>
+                  </thead>
+                  <tbody id="Grupo"></tbody>
+                </table>
+
+                <table class="table-detalhes table-hover thead-dark text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Data Inicio</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dataInicio"></tbody>
+                </table>         
+                <table class="table-detalhes table-hover thead-dark text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Data Fim</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dataFim"></tbody>
+                </table>   
+
+                <div id="notas">
+                <table class="table-detalhes table-hover thead-dark text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Grupo</th>
+                    </tr>
+                  </thead>
+                  <tbody id="GrupoNota"></tbody>
+                </table>
+                <table class="table-detalhes table-hover thead-dark text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Nota</th>
+                    </tr>
+                  </thead>
+                  <tbody id="notaGrupo"></tbody>
+                </table>
+
+              </div>
+
+              </div>  
+              </div>
+              <div class="col-md-5" id="desbloquear"></div>
+              <input type="button" id='BntClose' class="btn btn-danger" value="Fechar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	
+	<!---------------------------- FINALIZAR EVENTO ---------------------->
+	 <div id="finalEvento" class="modalAlunos">
+      <div class="modal-content-alunos modal-dialog modal-dialog-centered">
+        <div class="modal-body-alunos ">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <div class="col-md-11">   
+                <table class="table table-hover thead-dark text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Grupo</th>
+                      <th>Nota</th>
+                      <th>Inserir</th>
+                    </tr>
+                  </thead>
+                  <tbody id="GrupoFinalizar"></tbody>
+                </table>
+              </div>     
+              </div>           
+              </div>
+              <input type="button" id='BntCloseFinalizar' class="btn btn-danger" value="Fechar">
+              <input type="button" id='BntFinalizarNotas' class="btn btn-success" value="Finalizar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!---------------------------- FINALIZAR EVENTO ---------------------->
+
+<br>
+<div id="squares" class="col-md-12"></div>
+<div class="footer">
+ 
+</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script src="https://kit.fontawesome.com/bf03909e2a.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="../js/evento.js"></script>
+
+
+<script>
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }</script>
+
+
+</body>
+</html>
