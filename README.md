@@ -8,3 +8,5 @@ Programa que tem objetivo de auxiliar o professor na sala de aula, com as princi
 5. Associar atividade a um grupo de forma aleatória.
 6. Criar eventos, no qual é preciso de grupos e atividades.
 7. Finalizar eventos, adicionando notas para cada grupo.
+
+OBS: USUARIO E SENHA É "ADMIN", SEM AS ASPAS.
